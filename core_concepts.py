@@ -30,5 +30,23 @@ def demo_basic_chain():
 
     return chain
 
+def demo_batch_execution():
+    chain = demo_basic_chain()
+
+    # Batch execution with multiple questions
+    inputs = [
+        {"question": "What is the capital of Germany?"},
+        {"question": "What is the capital of Italy?"},
+        {"question": "What is the capital of Spain?"}
+    ]
+
+    # Execute the chain with multiple inputs
+    responses = chain.batch(inputs)
+    for i, response in zip(inputs, responses):
+        print("Question:", i[0]["question"])
+        print("Response:", response)
+
+
 if __name__ == "__main__":
-    demo_basic_chain()
+    # demo_basic_chain()
+    demo_batch_execution()

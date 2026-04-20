@@ -46,7 +46,15 @@ def demo_batch_execution():
         print("Question:", i[0]["question"])
         print("Response:", response)
 
+def demo_streaming():
+
+    chain = demo_basic_chain()
+
+    for chunk in chain.stream({"question": "What is the capital of France?"}):
+        print("Received chunk:", chunk)
+    print()
 
 if __name__ == "__main__":
     # demo_basic_chain()
-    demo_batch_execution()
+    # demo_batch_execution()
+    demo_streaming()
